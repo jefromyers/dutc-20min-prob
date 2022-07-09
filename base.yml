@@ -1,0 +1,22 @@
+services:
+  api:
+    build:
+      dockerfile: docker/api.dockerfile
+      context: .
+    volumes:
+      - ./api:/api
+    ports:
+      - "8000:8000"
+
+    command: uvicorn app:app --host=0.0.0.0 --port 8000
+
+  frontend:
+    build:
+      dockerfile: docker/frontend.dockerfile
+      context: .
+    volumes:
+      - ./frontend:/app
+    ports:
+     - "3000:8080"
+
+    command: npm run start
