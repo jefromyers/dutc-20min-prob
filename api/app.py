@@ -69,7 +69,6 @@ def init_team():
             for k in preferences
         }).fillna(False).sort_index()
     ).pipe(lambda df: df @ Series({'RL': 1, 'L': 0, 'DL': -1}))
-    print()
 
     global DF 
     DF = df
